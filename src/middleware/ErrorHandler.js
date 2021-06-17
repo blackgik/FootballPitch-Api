@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongooseValidationError = mongoose.Error.ValidationError;
 const isProduction = process.env.NODE_ENV === "production";
-const appResponse = require("../../lib/appResponse");
+const appResponse = require("./../../lib/appResponse");
 
 const errorNames = [
 	"CastError",
