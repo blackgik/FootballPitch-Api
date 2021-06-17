@@ -1,8 +1,10 @@
 const clubRoute = require("./ClubRoute")
-const playerRouter = require("./PlayerRoute")
+const playerRoute = require("./PlayerRoute")
+const matchScheduleRoute = require("./matchScheduleRoute")
 
 module.exports = (router) =>{
     router.use(clubRoute())
-    router.use(playerRouter())
+    router.use(playerRoute())
+    router.use(matchScheduleRoute())
     return router
 }
