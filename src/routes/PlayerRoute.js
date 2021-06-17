@@ -11,7 +11,7 @@ module.exports = function () {
     auth,
     playerController.createPlayer
   );
-
   router.delete("/delete-player/:id", auth, playerController.deletePlayer)
+  router.get("/get-all-players", auth, playerController.getAllPlayers)
   return router;
 };

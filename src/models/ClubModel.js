@@ -24,6 +24,10 @@ const ClubSchema = new Schema({
         default: 0,
         trim: true
     },
+    result: {
+        type: String,
+        default: "draw"
+    },
     club_captain: {
         type: String,
         required: true,

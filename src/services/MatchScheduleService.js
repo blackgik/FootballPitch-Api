@@ -6,6 +6,9 @@ class MatchSchedule {
         await match.save()
         return match
     }
+    async findAllSchedules() {
+        return await matchScheduleModel.find({})
+    }
 }
 
 module.exports = new MatchSchedule();

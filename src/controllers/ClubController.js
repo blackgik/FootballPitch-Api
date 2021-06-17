@@ -4,6 +4,7 @@ const {
   BadRequestError,
   DuplicateError,
   InternalServerError,
+  NotFoundError
 } = require("./../../lib/appError");
 
 class Club {
@@ -20,6 +21,13 @@ class Club {
     res
       .status(201)
       .send(appResponse("Club was Created Successfully", { newClub, token }));
+  }
+
+  async getAllClubs(req, res){
+    const clubs = await clubService.findAllClubs()
+    if(!clubs) throw new NotFoundError("clubs were not found");
+
+    res.send(appResponse("clubs found successfully", clubs))
   }
 }
 

@@ -12,6 +12,9 @@ class Player {
     async findPlayerAndDelete(id, clubID) {
         return await playerModel.findOneAndDelete({_id:id, club:clubID})
     }
+    async findAllPlayers(id) {
+        return await playerModel.find({club:id})
+    }
 }
 
 module.exports = new Player()

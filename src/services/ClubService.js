@@ -17,6 +17,9 @@ class Club {
     async findTokenById(id, token) {
         return await clubModel.findOne({_id:id, "tokens.token":token})
     }
+    async findAllClubs() {
+        return await clubModel.find({})
+    }
 }
 
 module.exports = new Club();

@@ -1,4 +1,5 @@
 const matchScheduleService = require("./../services/MatchScheduleService");
+const matchScheduleModel = require("./../models/matchScheduleModel")
 const clubService = require("./../services/ClubService");
 const appResponse = require("./../../lib/appResponse");
 const { NotFoundError, BadRequestError } = require("./../../lib/appError");
@@ -17,6 +18,12 @@ class MatchSchedule {
     if (!match) throw new InternalServerError("Something went wrong.");
 
     res.status(201).send(appResponse("Match Scheduled successfully"));
+  }
+
+  async getAllSchedules(req, res) {
+    const matchSchedules = await matchScheduleService.findAllSchedules()
+    if(!matchSchedules) throw new NotFoundError("schedules not found")
+    res.send(appResponse("schedules found successfully", matchSchedules))
   }
 }
 

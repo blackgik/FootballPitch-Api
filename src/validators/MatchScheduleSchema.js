@@ -5,6 +5,10 @@ const MatchScheduleSchema = Joi.object({
         teamA: Joi.string().required().lowercase(),
         teamB: Joi.string().required().lowercase()
     }),
+    scores: Joi.object({
+        teamA: Joi.number().required(),
+        teamB: Joi.number().required()
+    }),
     date: Joi.string().required(),
     time: Joi.string().required(),
     status: Joi.string().required(),

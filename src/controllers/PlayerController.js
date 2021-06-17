@@ -4,6 +4,7 @@ const {
   BadRequestError,
   DuplicateError,
   InternalServerError,
+  NotFoundError
 } = require("./../../lib/appError");
 const appResponse = require("./../../lib/appResponse");
 
@@ -44,6 +45,11 @@ class Player {
     res
       .status(200)
       .send(appResponse("player deleted successfully", playerDeleted));
+  }
+
+  async getAllPlayers() {
+      const players = await playerService.findAllPlayers(req.club._id)
+      if(!players) throw new NotFoundError("players do not exist")
   }
 }
 
