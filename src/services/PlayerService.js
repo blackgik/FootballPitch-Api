@@ -9,6 +9,9 @@ class Player {
     async findByPlayerNumber(data) {
         return await playerModel.findOne({player_number: data})
     }
+    async findPlayerAndDelete(id, clubID) {
+        return await playerModel.findOneAndDelete({_id:id, club:clubID})
+    }
 }
 
 module.exports = new Player()

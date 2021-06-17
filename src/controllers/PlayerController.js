@@ -19,6 +19,13 @@ class Player {
          await req.club.save()
         res.status(201).send(appResponse("player created successfully", newPlayer))
     }
+
+    async deletePlayer(req, res) {
+        const playerDeleted = await playerService.findPlayerAndDelete(req.params.id, req.club._id)
+        if(!playerDeleted) throw new InternalServerError("something went wrong in de-registering a player");
+
+        res.status(200).send(appResponse("player deleted successfully", playerDeleted))
+    }
 }
 
 module.exports = new Player()
